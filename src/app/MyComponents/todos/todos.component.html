@@ -1,0 +1,13 @@
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<h4>Your Todos</h4>
+<div *ngIf = "this.todos.length===0; else elseBlock">No Todos to display</div>
+<ng-template #elseBlock>
+
+  <div *ngFor ="let todo of todos">
+  <!--this is a directive which is help is to iterate over todos
+   it's like custom html attributes-->
+  <!-- these todos are declared hardly in todos.component.ts-->
+    <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"(todoCheckbox)="toggleTodo($event)"></app-todo-item> <!--this is event handler-->
+  <!--passing a todo in app-to-item component-->
+    </div>
+</ng-template>
